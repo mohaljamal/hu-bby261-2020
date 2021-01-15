@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="flex-div">
+    <div class="center-flex">
+        <h4>Mesajın Olusturdu Zaman : {{ message.CreationTime }}</h4>
+        <h4>Mesajın Okunduğu Zaman : {{ message.ReadingTime }}</h4>
+        <div class="timer-container">
+             <a href="/">ana sayfaya dön</a>
+        </div>
+    </div>
+</div>
+<style>
+   .center-flex
+    {
+    margin: 0 auto !important;
+    float: none !important;
+    padding-top: 20px;
+    font-size: 35px;
+    }
+    .flex-div
+    {
+     display: flex;
+    }
+
+    .timer-container{
+    text-align: center;
+    font-size: 16px;
+    }
+ </style>
+
+
+{% endblock %}

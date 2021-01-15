@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="flex-div">
+    <div class="center-flex">
+        <input type="hidden" id="seconds" value="{{message.ExpirationSec }}">
+        <h4>Gizli Mesaj : {{ message.MessageContent }}</h4>
+        <div class="timer-container">
+             <span id="timer-text"></span>
+        </div>
+    </div>
+</div>
+<style>
+   .center-flex
+    {
+    margin: 0 auto !important;
+    float: none !important;
+    padding-top: 20px;
+    font-size: 35px;
+    }
+    .flex-div
+    {
+     display: flex;
+
+    }
+    #timer-text
+    {
+    font-size: 80px;
+    color: red;
+    }
+    .timer-container
+    {
+        text-align: center;
+    }
+ </style>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    startTimer();
+    function startTimer() {
+        var timer = $("#seconds").val();
+        var countdown = setInterval(function () {
+
+
+            $("#timer-text").text(timer);
+
+            if (--timer < 0) {
+                clearInterval(countdown);
+                window.location.href = "/";
+            }
+        }, 1000);
+    }
+
+});
+</script>
+{% endblock %}
+

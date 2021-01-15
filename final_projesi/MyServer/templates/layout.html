@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gizli Mesaj</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script type="text/javascript" src="{{ STATIC_URL }} /static/jquery-3.5.1.min.js">
+</script>
+</head>
+<body>
+    <div class="page-body">
+        <div class="title-container">
+            <span class="main-title"> Gizli Mesaj uygulamasına hoş geldiniz</span>
+        </div>
+        <div class="logo-container">
+            <img src="{{ STATIC_URL }} /static/secret.png">
+        </div>
+        <div class="wrapper">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+</body>
+
+<style>
+        body
+        {
+        padding-left: 20%;
+        padding-right: 20%;
+        margin: 0 auto !important;
+        float: none !important;
+        }
+        .main-title
+        {
+        margin: 0 auto !important;
+        float: none !important;
+        padding-top: 20px;
+        font-size: 35px;
+        }
+        .title-container
+        {
+         display: flex;
+
+        }
+        .wrapper
+        {
+         margin-top:20px;
+
+        }
+        .logo-container
+        {
+         display: flex;
+        }
+        .logo-container img
+        {
+        width : 200px;
+        margin: auto;
+        }
+    </style>
+
+</html>

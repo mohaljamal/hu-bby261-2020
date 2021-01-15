@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="secret-message-text">Gizli Mesaj Yaz:</label>
+        <textarea class="form-control" id="secret-message-text" rows="4"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+         <label for="secret-message-seconds">zaman / saniye</label>
+        <input type="number" class="form-control" id="secret-message-seconds" value="20" />
+      </div>
+    </div>
+  </div>
+<div class="row">
+  <div class="col-md-6">
+      <div class="form-group">
+        <button class="btn btn-success" id="generate-link">Link Oluştur</button>
+      </div>
+    </div>
+</div>
+
+<div class="input-group d-none link-container">
+   <input type="text" id="message-link-input" class="form-control">
+   <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="copy-link-button">Link Copyala</button>
+   </span>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+    $("#generate-link").off("click").click(function(){
+        $(".link-container").addClass("d-none");
+        $.ajax({
+            type: "POST",
+            url: /generate/,
+            data: {
+                message : $("#secret-message-text").val(),
+                seconds : $("#secret-message-seconds").val()
+            },
+            success: function(response){
+
+                $("#message-link-input").val(response.url);
+                $(".link-container").removeClass("d-none");
+            }
+        });
+
+    });
+
+
+
+$("#copy-link-button").click(function(){
+    $("#message-link-input").select();
+    document.execCommand('copy');
+});
+
+});
+
+</script>
+
+{% endblock %}
+
+
+
